@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :events
+  match '/calendar', to: 'events#index', via: [:get]
   get 'static_pages/home'
   match '/code-of-conduct', to: 'static_pages#code_of_conduct', via: [:get]
   match '/guild-policies', to: 'static_pages#guild_policies', via: [:get]
