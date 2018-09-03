@@ -6,8 +6,9 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Start at</th>
+      <th>End at</th>
       <th>Type</th>
-      <th>Start time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +17,9 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
+        <td><%= event.start_at %></td>
+        <td><%= event.end_at %></td>
         <td><%= event.type %></td>
-        <td><%= event.start_time %></td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,6 +32,16 @@
 
 <%= link_to 'New Event', new_event_path %>
 
-<%= month_calendar do |date| %>
-  <%= date %>
+
+<%= month_calendar(attribute: :start_at, end_attribute: :end_at, events: @events) do |date, events| %>
+  <%= date.day %>
+
+  <% events.each do |event| %>
+    <div>
+      <table>
+        <thead><tr><%= event.name %></tr></thead>
+        <tbody><tr><i><%= event.start_at %></i></tr></tbody>
+      </table>
+    </div>
+  <% end %>
 <% end %>

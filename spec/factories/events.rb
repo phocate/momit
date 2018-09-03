@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :event do
     name "MyString"
+    start_at "2018-08-21 03:19:38"
+    end_at "2018-08-21 03:19:38"
     type ""
-    start_time "2018-08-21 01:19:22"
   end
 end
