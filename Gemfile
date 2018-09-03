@@ -43,6 +43,10 @@ gem 'bootstrap', '~> 4.0.0'
 
 #simple display of a calendar
 gem "simple_calendar", "~> 2.0"
+gem 'exception_notification'
+gem 'slack-notifier'
+
+gem 'thredded', '~> 0.15.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
