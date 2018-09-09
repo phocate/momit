@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180821031938) do
+ActiveRecord::Schema.define(version: 20180904180020) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.string "charclass"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "start_at"
@@ -18,11 +29,7 @@ ActiveRecord::Schema.define(version: 20180821031938) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-ActiveRecord::Schema.define(version: 20180821173745) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
