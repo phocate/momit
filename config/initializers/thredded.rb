@@ -1,3 +1,4 @@
+require 'html_pipeline_twemoji'
 # frozen_string_literal: true
 
 # Thredded configuration
@@ -84,6 +85,9 @@ Thredded.email_from = 'MOMiT Forum <forum@momitguild.org>'
 # Thredded.parent_mailer = 'ActionMailer::Base'
 
 # ==> Model configuration
+# The range of valid messageboard name lengths. Default:
+# Thredded.messageboard_name_length_range = (1..60)
+
 # The range of valid topic title lengths. Default:
 # Thredded.topic_title_length_range = (1..200)
 
@@ -106,10 +110,8 @@ Thredded.email_from = 'MOMiT Forum <forum@momitguild.org>'
 # ==> Post Content Formatting
 # Customize the way Thredded handles post formatting.
 
-# Change the default html-pipeline filters used by thredded.
-# E.g. to replace default emoji filter with your own:
-# Thredded::ContentFormatter.after_markup_filters[
-#   Thredded::ContentFormatter.after_markup_filters.index(HTML::Pipeline::EmojiFilter)] = MyEmojiFilter
+# ===> Emoji using the 'twemoji' gem
+Thredded::ContentFormatter.after_markup_filters.insert(1, HTMLPipelineTwemoji)
 
 # Change the HTML sanitization settings used by Thredded.
 # See the Sanitize docs for more information on the underlying library: https://github.com/rgrove/sanitize/#readme
@@ -125,9 +127,15 @@ Thredded.email_from = 'MOMiT Forum <forum@momitguild.org>'
 #
 # Rails.application.config.to_prepare do
 #   Thredded::ApplicationController.module_eval do
+#     # Render sign in page:
 #     rescue_from Thredded::Errors::LoginRequired do |exception|
-#       @message = exception.message
-#       render template: 'sessions/new', status: :forbidden
+#       flash.now[:notice] = exception.message
+#       controller = Users::SessionsController.new
+#       controller.request = request
+#       controller.request.env['devise.mapping'] = Devise.mappings[:user]
+#       controller.response = response
+#       controller.response_options = { status: :forbidden }
+#       controller.process(:new)
 #     end
 #   end
 # end

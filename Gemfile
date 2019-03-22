@@ -13,7 +13,7 @@ gem 'pg', '~> 0.21.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -44,7 +44,8 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'exception_notification'
 gem 'slack-notifier'
 
-gem 'thredded', '~> 0.15.4'
+gem 'thredded', '~> 0.16.1'
+gem 'twemoji'
 
 # for event calendar, way to display calendar
 # and nicer date selection
@@ -85,6 +86,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'better_errors'
   gem 'binding_of_caller' #extra features for better_errors display
+  gem 'annotate'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
