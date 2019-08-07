@@ -32,9 +32,9 @@ if Rails.env == "development"
   example_guest.confirm
   
   # example events for locked, the past, and the future
-  example_fut_event = Event.create({name: "future event", description: "event in the future", start_time: 4.days.from_now, end_time: 4.days.from_now + 1.hour, event_type: "sample", is_template: 0, is_locked: 0, max_tank: 2, max_dps: 5, max_healer: 3, user_creator: example_admin})
-  example_exp_event = Event.create({name: "expired event", description: "event in the past", start_time: 4.days.ago, end_time: 4.days.ago + 1.hour, event_type: "sample", is_template: 0, is_locked: 0, max_tank: 2, max_dps: 5, max_healer: 3, user_creator: example_admin})
-  example_lock_event = Event.create({name: "locked event", description: "current event but locked", start_time: Time.now, end_time: Time.now + 1.hour, event_type: "sample", is_template: 0, is_locked: 1, max_tank: 2, max_dps: 5, max_healer: 3, user_creator: example_admin})
+  example_fut_event = Event.create({name: "future event", description: "event in the future", start_time: 4.days.from_now, end_time: 4.days.from_now + 1.hour, event_type: "sample", is_template: 0, is_locked: 0, max_tank: 2, max_dps: 5, max_healer: 3, creator: example_admin})
+  example_exp_event = Event.create({name: "expired event", description: "event in the past", start_time: 4.days.ago, end_time: 4.days.ago + 1.hour, event_type: "sample", is_template: 0, is_locked: 0, max_tank: 2, max_dps: 5, max_healer: 3, creator: example_admin})
+  example_lock_event = Event.create({name: "locked event", description: "current event but locked", start_time: Time.now, end_time: Time.now + 1.hour, event_type: "sample", is_template: 0, is_locked: 1, max_tank: 2, max_dps: 5, max_healer: 3, creator: example_admin})
 
   # example chars covering some role permutations
   example_tank_char = Character.create({name: 'IAMATank', charclass: 'warrior', is_tank: 1, is_dps: 0, is_healer: 0, main_role: 'tank', user: example_admin})
