@@ -25,3 +25,6 @@
 /lib/tasks/cloud9_startup.rb
 
 config/secrets.yml
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
